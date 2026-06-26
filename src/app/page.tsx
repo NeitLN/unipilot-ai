@@ -1,310 +1,238 @@
 "use client"
 
-import { AppLayout } from "@/components/layout/AppLayout"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { motion } from "framer-motion"
-import { 
-  Sparkles, 
-  Target,
-  Clock,
-  Play,
-  ArrowRight,
-  BookOpen,
-  Focus,
-  CheckCircle2,
-  Calendar,
-  Activity,
-  HeartPulse
-} from "lucide-react"
+import { Sparkles, Play, ArrowRight, TrendingUp } from "lucide-react"
 
 export default function DashboardPage() {
   return (
-    <AppLayout>
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 md:gap-10">
+    <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 relative z-10">
+      
+      {/* Left Column: The Narrative (65%) */}
+      <div className="lg:w-[65%] space-y-24">
         
-        {/* Main Narrative Column (65%) */}
-        <div className="xl:col-span-8 space-y-10">
+        {/* The Brief */}
+        <section className="space-y-6">
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1, duration: 1 }}
+            className="text-[11px] font-bold text-[var(--text-muted)] tracking-[0.25em] uppercase"
+          >
+            Friday, July 8
+          </motion.p>
+          <motion.h1 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[44px] md:text-[56px] font-medium tracking-tight text-[var(--text-ink)] leading-[1.05] font-serif"
+          >
+            Good morning, Tien.
+          </motion.h1>
           
-          {/* Today OS Header */}
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="space-y-4"
+            transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative max-w-2xl mt-6"
           >
-            <div className="flex items-center gap-3 text-[13px] font-bold tracking-wide uppercase text-slate-400">
-              <span>Friday, July 8</span>
-              <span className="w-1 h-1 rounded-full bg-slate-300" />
-              <span className="text-emerald-500">Optimal State</span>
+            <div className="absolute -left-12 top-1.5 w-6 h-6 bg-[var(--academic-indigo-light)] rounded-full flex items-center justify-center shadow-inner-soft">
+              <Sparkles className="w-3.5 h-3.5 text-[var(--academic-indigo)]" />
+              <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-[var(--academic-emerald)] rounded-full border-2 border-[var(--bg-canvas)]" />
             </div>
-            <h1 className="text-4xl md:text-[44px] font-extrabold tracking-tight text-slate-900 leading-tight">
-              Good morning, Tien.
-            </h1>
-          </motion.div>
-
-          {/* AI Assistant Brief */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="absolute -left-4 top-6 w-1 h-12 bg-indigo-500 rounded-r-full" />
-            <div className="bg-white/80 backdrop-blur-2xl rounded-[32px] p-8 md:p-10 shadow-[0_8px_40px_rgba(0,0,0,0.03)] border border-white">
-              
-              <div className="flex items-start gap-5">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-500 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/20 flex-shrink-0 relative">
-                  <div className="absolute inset-0 rounded-full border border-white/40" />
-                  <Sparkles className="w-5 h-5 text-white" />
-                  <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-400 border-2 border-white rounded-full" />
-                </div>
-                
-                <div className="pt-1">
-                  <p className="text-[19px] text-slate-700 leading-relaxed font-medium max-w-2xl mb-8">
-                    Your workload is manageable today. You have 3 classes, 2 assignments, and one perfect 90-minute study slot at 2 PM. I recommend finishing the <span className="text-indigo-600 font-semibold bg-indigo-50 px-2 py-0.5 rounded-md">Database task</span> before dinner to protect your evening.
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-3">
-                    <Button className="h-12 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white px-8 font-semibold shadow-md shadow-indigo-500/10">
-                      Accept Plan
-                    </Button>
-                    <Button variant="outline" className="h-12 rounded-full px-6 border-slate-200 text-slate-600 font-semibold hover:bg-slate-50 bg-white shadow-sm">
-                      Adjust Timeline
-                    </Button>
-                  </div>
-                </div>
-              </div>
+            <p className="text-[21px] md:text-[25px] leading-[1.5] text-[var(--text-muted)] font-light tracking-[-0.01em]">
+              Your energy is <span className="text-[var(--academic-emerald)] font-medium">high</span> today, and your schedule is light. I&apos;ve placed your <span className="text-[var(--text-ink)] font-medium border-b border-[var(--border-subtle)] pb-[2px] cursor-pointer hover:border-[var(--text-ink)] transition-colors">Database Assignment</span> in the 2 PM slot to protect your evening for rest.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <motion.button 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-6 py-2.5 bg-[var(--text-ink)] text-white rounded-[12px] text-[14px] font-medium shadow-premium-soft hover:shadow-premium-hover transition-all"
+              >
+                Accept Day
+              </motion.button>
+              <motion.button 
+                whileHover={{ scale: 1.02, backgroundColor: "var(--surface-elevated)" }}
+                whileTap={{ scale: 0.98 }}
+                className="px-6 py-2.5 bg-transparent text-[var(--text-ink)] border-material rounded-[12px] text-[14px] font-medium transition-all shadow-sm"
+              >
+                Modify
+              </motion.button>
             </div>
           </motion.div>
+        </section>
 
-          {/* Mission of the Day */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <div className="flex items-center justify-between mb-5">
-              <h3 className="font-bold text-slate-800 text-[17px] flex items-center gap-2">
-                <Target className="w-5 h-5 text-indigo-500" /> Mission of the Day
-              </h3>
-            </div>
-            
-            <div className="group bg-white rounded-[28px] p-7 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-slate-100/50 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-400 cursor-pointer">
-              <div className="flex items-start gap-5">
-                <div className="w-14 h-14 rounded-[20px] bg-rose-50 flex items-center justify-center flex-shrink-0 border border-rose-100/50 group-hover:scale-105 transition-transform duration-400">
-                  <CheckCircle2 className="w-7 h-7 text-rose-500" />
-                </div>
-                <div className="pt-1">
-                  <h4 className="text-[20px] font-bold text-slate-900 mb-2">Finish Database Assignment</h4>
-                  <div className="flex flex-wrap items-center gap-2.5 text-[14px] font-semibold">
-                    <span className="text-rose-500 bg-rose-50 px-2.5 py-1 rounded-lg">Due Tonight 11:59 PM</span>
-                    <span className="text-slate-500 flex items-center gap-1 bg-slate-50 px-2.5 py-1 rounded-lg"><Clock className="w-4 h-4"/> 90 mins</span>
-                    <span className="text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-lg flex items-center gap-1"><Sparkles className="w-3.5 h-3.5" /> Start at 2:00 PM</span>
-                  </div>
-                </div>
-              </div>
-              <div className="w-14 h-14 rounded-full bg-slate-900 flex items-center justify-center text-white shadow-md group-hover:bg-indigo-600 transition-colors shrink-0">
-                <Play className="w-5 h-5 ml-1" />
-              </div>
-            </div>
-          </motion.div>
+        {/* The Mission */}
+        <motion.section 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="group relative bg-[#111110] text-white rounded-[24px] p-8 md:p-10 flex flex-col md:flex-row justify-between md:items-center gap-8 shadow-premium-hover cursor-pointer overflow-hidden transition-all duration-500 hover:-translate-y-1"
+        >
+          <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-white/10 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+          <div className="relative z-10">
+            <p className="text-[11px] font-bold text-white/50 tracking-widest uppercase mb-4 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-white/50 rounded-full" /> Priority
+            </p>
+            <h2 className="text-[28px] font-semibold tracking-tight mb-2">Database Assignment</h2>
+            <p className="text-[15px] text-white/60 font-medium">Due tonight • 90 mins estimated</p>
+          </div>
+          <div className="relative z-10 shrink-0">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center justify-center w-14 h-14 bg-white text-black rounded-full shadow-[0_4px_16px_rgba(255,255,255,0.2)]"
+            >
+              <Play className="w-5 h-5 fill-black ml-1" />
+            </motion.button>
+          </div>
+        </motion.section>
 
-          {/* Today Timeline - The Core Component */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="font-bold text-slate-800 text-[17px] flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-slate-400" /> Today&apos;s Flow
-              </h3>
-              <Button variant="ghost" className="text-indigo-600 font-bold hover:bg-indigo-50">View Week</Button>
-            </div>
-            
-            <div className="bg-white rounded-[32px] p-8 md:p-10 shadow-[0_4px_30px_rgba(0,0,0,0.02)] border border-white">
-              <div className="relative pl-6 sm:pl-8 space-y-10">
-                
-                {/* Visual Line */}
-                <div className="absolute top-4 bottom-4 left-[9px] sm:left-[17px] w-0.5 bg-slate-100 rounded-full" />
-                
-                {/* Timeline Item 1 - Past */}
-                <div className="relative group opacity-50">
-                  <div className="absolute -left-[22px] sm:-left-[22px] top-1.5 w-[14px] h-[14px] rounded-full bg-slate-300 border-4 border-white" />
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
-                    <div>
-                      <p className="text-[13px] font-bold text-slate-400 mb-1 tracking-wide">08:00 AM</p>
-                      <h4 className="text-[18px] font-bold text-slate-900 line-through decoration-2 decoration-slate-300">Algorithms & Complexity</h4>
-                      <p className="text-[14px] text-slate-500 font-medium mt-1">Room 402 • Prof. Davis</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Timeline Item 2 - Current/Next */}
-                <div className="relative group">
-                  <div className="absolute -left-[24px] sm:-left-[24px] top-1.5 w-[18px] h-[18px] rounded-full bg-blue-500 border-4 border-white shadow-[0_0_12px_rgba(59,130,246,0.4)]" />
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 bg-blue-50/50 p-5 rounded-[20px] -mt-3 border border-blue-100/50">
-                    <div>
-                      <p className="text-[13px] font-bold text-blue-600 mb-1 tracking-wide">10:00 AM — CURRENT</p>
-                      <h4 className="text-[18px] font-bold text-slate-900">Requirements Engineering</h4>
-                      <p className="text-[14px] text-slate-600 font-medium mt-1">Lab 2 • Active Session</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Timeline Item 3 - AI Block */}
-                <div className="relative group">
-                  <div className="absolute -left-[24px] sm:-left-[24px] top-1.5 w-[18px] h-[18px] rounded-full bg-indigo-500 border-4 border-white shadow-[0_0_12px_rgba(99,102,241,0.4)]" />
-                  <div className="bg-indigo-50/70 rounded-[20px] p-5 -mt-3 border border-indigo-100/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div>
-                      <p className="text-[13px] font-bold text-indigo-600 mb-1 tracking-wide flex items-center gap-1"><Sparkles className="w-3.5 h-3.5"/> 02:00 PM</p>
-                      <h4 className="text-[18px] font-bold text-slate-900">Focus: Database</h4>
-                      <p className="text-[14px] text-slate-600 font-medium mt-1">AI Optimized Block • 90 mins</p>
-                    </div>
-                    <Button className="h-10 px-6 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-sm font-semibold">
-                      Start Prep
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Timeline Item 4 - Rest */}
-                <div className="relative group">
-                  <div className="absolute -left-[22px] sm:-left-[22px] top-1.5 w-[14px] h-[14px] rounded-full border-2 border-emerald-400 bg-white" />
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
-                    <div>
-                      <p className="text-[13px] font-bold text-slate-500 mb-1 tracking-wide">06:00 PM</p>
-                      <h4 className="text-[18px] font-bold text-slate-900 flex items-center gap-2">
-                        Evening Rest <Badge variant="outline" className="text-[11px] bg-emerald-50 text-emerald-600 border-emerald-200">Protected</Badge>
-                      </h4>
-                      <p className="text-[14px] text-slate-500 font-medium mt-1">No tasks scheduled</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </motion.div>
-
-        </div>
-
-        {/* Right Rail Pulse Cards (35%) */}
-        <div className="xl:col-span-4 space-y-5 pt-2">
+        {/* The Flow (Timeline) */}
+        <motion.section 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+        >
+          <h3 className="text-[11px] font-bold text-[var(--text-muted)] tracking-[0.2em] uppercase mb-12">
+            Today&apos;s Flow
+          </h3>
           
-          {/* Priority Stack Preview */}
-          <motion.div 
-            initial={{ opacity: 0, x: 15 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white/80 backdrop-blur-xl rounded-[28px] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-white"
-          >
-            <div className="flex items-center justify-between mb-5">
-              <h3 className="font-bold text-slate-800 text-[15px] flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-slate-400" /> Upcoming Deadlines
-              </h3>
-              <span className="text-[13px] font-bold text-indigo-600 cursor-pointer hover:underline">All</span>
-            </div>
-            <div className="space-y-3">
-              {[
-                { title: "Calculus III Prob Set", due: "Tomorrow, 8 AM", color: "bg-amber-400" },
-                { title: "Read Chapter 5", due: "In 3 days", color: "bg-slate-300" },
-                { title: "Project Proposal", due: "Next week", color: "bg-slate-300" },
-              ].map((task, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 rounded-[16px] hover:bg-slate-50 cursor-pointer transition-colors group border border-transparent hover:border-slate-100">
-                  <div className={`w-1.5 h-10 rounded-full ${task.color}`} />
-                  <div>
-                    <p className="text-[15px] font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">{task.title}</p>
-                    <p className="text-[13px] font-medium text-slate-500 mt-0.5">{task.due}</p>
-                  </div>
+          <div className="relative pl-[42px] border-l border-[var(--border-subtle)] space-y-12">
+            
+            {/* Timeline Gradient Mask */}
+            <div className="absolute left-[-1px] top-0 w-[1px] h-16 bg-gradient-to-b from-[var(--bg-canvas)] to-transparent" />
+            
+            {/* Item */}
+            <div className="relative opacity-40 hover:opacity-60 transition-opacity cursor-default">
+              <div className="absolute -left-[46px] top-1.5 w-2 h-2 rounded-full bg-[var(--text-muted)] ring-4 ring-[var(--bg-canvas)]" />
+              <div className="flex gap-8 items-baseline">
+                <span className="text-[13px] font-medium text-[var(--text-muted)] w-12 shrink-0">08:00</span>
+                <div>
+                  <h4 className="text-[16px] font-medium text-[var(--text-ink)] line-through decoration-1">Algorithms & Complexity</h4>
                 </div>
-              ))}
+              </div>
             </div>
-          </motion.div>
 
-          {/* Focus Pulse */}
-          <motion.div 
-            initial={{ opacity: 0, x: 15 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-white/80 backdrop-blur-xl rounded-[28px] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-white group hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all cursor-pointer"
-          >
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2 text-slate-700 font-bold text-[15px]">
-                <div className="w-8 h-8 rounded-[12px] bg-sky-50 flex items-center justify-center">
-                  <Focus className="w-4 h-4 text-sky-500" />
+            {/* Item - Current */}
+            <div className="relative group cursor-pointer">
+              <div className="absolute -left-[48px] top-1 w-[12px] h-[12px] rounded-full bg-[var(--academic-indigo)] ring-[6px] ring-[var(--bg-canvas)] shadow-[0_0_16px_rgba(90,87,216,0.6)]" />
+              <div className="absolute -left-[48px] top-1 w-[12px] h-[12px] rounded-full bg-[var(--academic-indigo)] animate-ping opacity-40" />
+              <div className="flex gap-8 items-baseline group-hover:translate-x-1 transition-transform duration-300">
+                <span className="text-[13px] font-semibold text-[var(--academic-indigo)] w-12 shrink-0">10:00</span>
+                <div>
+                  <h4 className="text-[18px] font-semibold text-[var(--text-ink)] tracking-tight">Requirements Engineering</h4>
+                  <p className="text-[14px] text-[var(--text-muted)] mt-1 font-medium">Lab 2 • Active Session</p>
                 </div>
-                Focus
               </div>
-              <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-slate-600 transition-colors" />
             </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-[36px] font-extrabold text-slate-900 tracking-tight">2h 15m</span>
-            </div>
-            <div className="mt-4 flex gap-1.5">
-              {[1, 2, 3, 4].map((day) => (
-                <div key={day} className="h-2 flex-1 rounded-full bg-sky-500" />
-              ))}
-              <div className="h-2 flex-1 rounded-full bg-slate-100" />
-            </div>
-            <p className="text-[13px] text-slate-500 font-bold mt-3">🔥 4-day streak</p>
-          </motion.div>
 
-          {/* Energy Pulse */}
-          <motion.div 
-            initial={{ opacity: 0, x: 15 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-white/80 backdrop-blur-xl rounded-[28px] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-white group hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all cursor-pointer"
-          >
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2 text-slate-700 font-bold text-[15px]">
-                <div className="w-8 h-8 rounded-[12px] bg-emerald-50 flex items-center justify-center">
-                  <HeartPulse className="w-4 h-4 text-emerald-500" />
+            {/* Item - AI Block */}
+            <div className="relative group cursor-pointer">
+              <div className="absolute -left-[47px] top-1.5 w-2.5 h-2.5 rounded-full border-[2.5px] border-[var(--academic-indigo)] bg-[var(--bg-canvas)] ring-[6px] ring-[var(--bg-canvas)] group-hover:bg-[var(--academic-indigo-light)] transition-colors" />
+              <div className="flex gap-8 items-baseline group-hover:translate-x-1 transition-transform duration-300">
+                <span className="text-[13px] font-medium text-[var(--text-muted)] w-12 shrink-0">14:00</span>
+                <div className="bg-[var(--surface-elevated)] px-6 py-5 rounded-[20px] shadow-premium-soft border-material -mt-4 w-full max-w-sm relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[var(--academic-indigo)] to-[var(--academic-emerald)] opacity-50" />
+                  <h4 className="text-[16px] font-semibold text-[var(--text-ink)] flex items-center gap-2">
+                    <Sparkles className="w-3.5 h-3.5 text-[var(--academic-indigo)]" /> Deep Work: Database
+                  </h4>
+                  <p className="text-[13px] text-[var(--text-muted)] mt-1.5 font-medium">90 mins scheduled by AI</p>
                 </div>
-                Energy
               </div>
             </div>
-            <div className="flex items-baseline gap-2 mb-2">
-              <span className="text-[36px] font-extrabold text-emerald-500 tracking-tight">82%</span>
-            </div>
-            <div className="bg-emerald-50/50 rounded-[16px] p-3 border border-emerald-100/50">
-              <p className="text-[13px] font-bold text-emerald-700 leading-relaxed">
-                Workload is balanced. Recovery is on track.
-              </p>
-            </div>
-          </motion.div>
 
-          {/* GPA Pulse */}
-          <motion.div 
-            initial={{ opacity: 0, x: 15 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="bg-white/80 backdrop-blur-xl rounded-[28px] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-white group hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all cursor-pointer"
-          >
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2 text-slate-700 font-bold text-[15px]">
-                <div className="w-8 h-8 rounded-[12px] bg-indigo-50 flex items-center justify-center">
-                  <Activity className="w-4 h-4 text-indigo-500" />
+            {/* Item - Rest */}
+            <div className="relative group cursor-pointer">
+              <div className="absolute -left-[47px] top-1.5 w-2.5 h-2.5 rounded-full bg-transparent border-2 border-[var(--academic-emerald)] ring-[6px] ring-[var(--bg-canvas)]" />
+              <div className="flex gap-8 items-baseline group-hover:translate-x-1 transition-transform duration-300">
+                <span className="text-[13px] font-medium text-[var(--text-muted)] w-12 shrink-0">18:00</span>
+                <div>
+                  <h4 className="text-[16px] font-medium text-[var(--text-ink)]">Evening Rest</h4>
+                  <p className="text-[14px] text-[var(--academic-emerald)] font-medium mt-1">Protected time</p>
                 </div>
-                GPA
               </div>
             </div>
-            <div className="flex items-baseline gap-2 mb-3">
-              <span className="text-[36px] font-extrabold text-slate-900 tracking-tight">3.42</span>
-            </div>
-            <div className="space-y-2">
-              <div className="flex justify-between text-[13px] font-bold">
-                <span className="text-slate-500">Target: 3.50</span>
-                <span className="text-indigo-600">Achievable</span>
-              </div>
-              <div className="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                <div className="h-full bg-indigo-500 rounded-full w-[85%]" />
-              </div>
-            </div>
-          </motion.div>
 
-        </div>
+          </div>
+        </motion.section>
+
       </div>
-    </AppLayout>
+
+      {/* Right Column: The Pulse (35%) */}
+      <div className="lg:w-[35%] lg:pt-16 space-y-16">
+        
+        {/* Energy */}
+        <motion.div 
+          initial={{ opacity: 0, x: 10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="group cursor-default"
+        >
+          <h4 className="text-[11px] font-bold uppercase tracking-widest text-[var(--text-muted)] mb-4">State</h4>
+          <div className="flex items-center gap-4">
+            <div className="w-2.5 h-2.5 rounded-full bg-[var(--academic-emerald)] shadow-[0_0_16px_rgba(52,199,89,0.5)]" />
+            <span className="text-[36px] font-light text-[var(--text-ink)] tracking-tight">82% Energy</span>
+          </div>
+          <p className="text-[14px] text-[var(--text-muted)] mt-2 font-medium">Recovery is on track.</p>
+        </motion.div>
+
+        {/* Focus */}
+        <motion.div 
+          initial={{ opacity: 0, x: 10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="group cursor-default"
+        >
+          <h4 className="text-[11px] font-bold uppercase tracking-widest text-[var(--text-muted)] mb-4">Focus Today</h4>
+          <div className="text-[36px] font-light text-[var(--text-ink)] tracking-tight">2h 15m</div>
+          <div className="flex gap-1 mt-4 max-w-[220px]">
+            {[1, 2, 3, 4].map((day) => (
+              <div key={day} className="h-[3px] flex-1 rounded-full bg-[var(--text-ink)]" />
+            ))}
+            <div className="h-[3px] flex-1 rounded-full bg-[var(--border-subtle)]" />
+          </div>
+          <p className="text-[13px] text-[var(--text-muted)] mt-3 font-medium">🔥 4-day streak</p>
+        </motion.div>
+
+        {/* GPA Trajectory */}
+        <motion.div 
+          initial={{ opacity: 0, x: 10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="group cursor-pointer"
+        >
+          <h4 className="text-[11px] font-bold uppercase tracking-widest text-[var(--text-muted)] mb-4 flex items-center gap-1.5 group-hover:text-[var(--text-ink)] transition-colors">
+            Trajectory <ArrowRight className="w-3.5 h-3.5 opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+          </h4>
+          <div className="text-[36px] font-light text-[var(--text-ink)] tracking-tight">3.42 GPA</div>
+          <p className="text-[14px] text-[var(--academic-indigo)] font-medium mt-2 flex items-center gap-1.5">
+            <TrendingUp className="w-4 h-4" /> On track for 3.50 target
+          </p>
+        </motion.div>
+
+        {/* Upcoming Horizon */}
+        <motion.div 
+          initial={{ opacity: 0, x: 10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h4 className="text-[11px] font-bold uppercase tracking-widest text-[var(--text-muted)] mb-6 flex justify-between items-center">
+            Horizon
+            <ArrowRight className="w-3.5 h-3.5 cursor-pointer hover:text-[var(--text-ink)] transition-colors" />
+          </h4>
+          <div className="space-y-6">
+            <div className="group cursor-pointer border-l-2 border-[var(--academic-amber)] pl-4">
+              <p className="text-[15px] font-medium text-[var(--text-ink)] group-hover:text-[var(--academic-indigo)] transition-colors">Calculus III Prob Set</p>
+              <p className="text-[13px] text-[var(--academic-amber)] font-semibold mt-1">Tomorrow</p>
+            </div>
+            <div className="group cursor-pointer border-l-2 border-[var(--border-subtle)] pl-4">
+              <p className="text-[15px] font-medium text-[var(--text-ink)] group-hover:text-[var(--academic-indigo)] transition-colors">Read Chapter 5</p>
+              <p className="text-[13px] text-[var(--text-muted)] font-medium mt-1">In 3 days</p>
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
+    </div>
   )
 }

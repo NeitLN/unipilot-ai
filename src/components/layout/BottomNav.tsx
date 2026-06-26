@@ -2,51 +2,37 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
-import { Layout, CheckCircle, BrainCircuit, Focus, MoreHorizontal } from "lucide-react"
 
 const navigation = [
-  { name: "Home", href: "/", icon: Layout },
-  { name: "Tasks", href: "/assignments", icon: CheckCircle },
-  { name: "Planner", href: "/ai-planner", icon: BrainCircuit },
-  { name: "Focus", href: "/focus", icon: Focus },
-  { name: "More", href: "/menu", icon: MoreHorizontal },
+  { name: "Day", href: "/" },
+  { name: "Priorities", href: "/assignments" },
+  { name: "Flow", href: "/schedule" },
+  { name: "Zone", href: "/focus" },
 ]
 
 export function BottomNav() {
   const pathname = usePathname()
 
   return (
-    <div className="md:hidden fixed bottom-6 left-4 right-4 z-50">
-      <div className="bg-white/90 backdrop-blur-2xl border border-slate-200/50 shadow-[0_16px_40px_rgba(15,23,42,0.08)] rounded-[32px] px-2 py-2 flex items-center justify-around">
+    <div className="lg:hidden fixed bottom-8 left-6 right-6 z-50">
+      <div className="bg-[var(--surface-elevated)]/90 backdrop-blur-2xl border-material shadow-premium-hover rounded-[20px] px-1.5 py-1.5 flex items-center justify-around">
         {navigation.map((item) => {
           const isActive = pathname === item.href
           return (
             <Link
               key={item.name}
               href={item.href}
-              className="relative flex flex-col items-center justify-center w-full py-2"
+              className="relative px-4 py-2 z-10 w-full text-center"
             >
-              <div className="relative z-10 flex flex-col items-center">
-                <item.icon
-                  className={cn(
-                    "w-[22px] h-[22px] mb-1 transition-all duration-300",
-                    isActive ? "text-indigo-600 scale-110" : "text-slate-400"
-                  )}
-                />
-                <span className={cn(
-                  "text-[10px] font-medium transition-colors duration-300",
-                  isActive ? "text-indigo-600" : "text-slate-400"
-                )}>
-                  {item.name}
-                </span>
-              </div>
+              <span className={`relative z-10 text-[12px] font-semibold transition-colors duration-300 ${isActive ? "text-[var(--text-ink)]" : "text-[var(--text-muted)]"}`}>
+                {item.name}
+              </span>
               {isActive && (
                 <motion.div
                   layoutId="bottom-nav-active"
-                  className="absolute inset-0 bg-indigo-50 rounded-2xl -z-0"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  className="absolute inset-0 bg-[var(--surface-dimmed)] shadow-inner-soft rounded-[14px] -z-0"
+                  transition={{ type: "spring", stiffness: 500, damping: 35 }}
                 />
               )}
             </Link>
