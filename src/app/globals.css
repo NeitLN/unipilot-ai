@@ -1,0 +1,279 @@
+@config "../../tailwind.config.ts";
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+
+  /* Brand and neutral architecture */
+  --color-canvas: oklch(0.965 0.006 100);
+  --color-surface: oklch(0.995 0.002 100);
+  --color-surface-raised: oklch(1 0 0);
+  --color-surface-muted: oklch(0.94 0.01 105);
+  --color-ink: oklch(0.19 0.018 145);
+  --color-text: oklch(0.27 0.018 145);
+  --color-text-muted: oklch(0.43 0.018 145);
+  --color-border: oklch(0.865 0.012 110);
+  --color-border-strong: oklch(0.72 0.018 120);
+  --color-backdrop: oklch(0.12 0.01 145 / 0.52);
+
+  /* Primary: seed-derived healthy-stem green */
+  --color-primary: oklch(0.42 0.12 145);
+  --color-primary-hover: oklch(0.37 0.115 145);
+  --color-primary-active: oklch(0.32 0.105 145);
+  --color-primary-soft: oklch(0.925 0.04 145);
+  --color-primary-soft-hover: oklch(0.89 0.055 145);
+  --color-on-primary: oklch(0.99 0.002 100);
+  --color-focus: oklch(0.62 0.15 145);
+
+  /* Semantic state vocabulary */
+  --color-disabled-bg: oklch(0.91 0.006 105);
+  --color-disabled-text: oklch(0.53 0.01 120);
+  --color-selected-bg: var(--color-primary-soft);
+  --color-selected-text: oklch(0.31 0.1 145);
+  --color-loading: oklch(0.66 0.025 120);
+
+  --color-success: oklch(0.42 0.115 145);
+  --color-success-bg: oklch(0.94 0.035 145);
+  --color-warning: oklch(0.5 0.13 75);
+  --color-warning-bg: oklch(0.95 0.045 78);
+  --color-error: oklch(0.48 0.17 28);
+  --color-error-bg: oklch(0.95 0.035 28);
+  --color-info: oklch(0.43 0.12 245);
+  --color-info-bg: oklch(0.95 0.025 245);
+
+  /* Type scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* Shape and depth */
+  --radius-sm: 0.75rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1rem;
+  --shadow-low: 0 1px 2px oklch(0.19 0.018 145 / 0.06);
+  --shadow-raised: 0 4px 8px oklch(0.19 0.018 145 / 0.08);
+
+  /* Motion and stacking */
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --z-sticky: 20;
+  --z-dialog-backdrop: 40;
+  --z-dialog: 50;
+  --z-tooltip: 60;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--color-canvas);
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: clip;
+  background: var(--color-canvas);
+  color: var(--color-text);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+
+button,
+a,
+input,
+select,
+textarea,
+[tabindex]:not([tabindex="-1"]) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-primary-soft-hover);
+  color: var(--color-ink);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-ink);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.skip-link {
+  position: fixed;
+  left: var(--space-4);
+  top: var(--space-4);
+  z-index: var(--z-tooltip);
+  transform: translateY(-160%);
+  border-radius: var(--radius-sm);
+  background: var(--color-ink);
+  color: var(--color-surface-raised);
+  padding: var(--space-3) var(--space-4);
+  font-weight: 700;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.app-grid {
+  min-height: 100vh;
+}
+
+.desktop-sidebar {
+  display: none;
+}
+
+.app-column {
+  min-width: 0;
+  padding-bottom: calc(5.75rem + env(safe-area-inset-bottom));
+}
+
+.top-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  min-height: 4.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  background: oklch(0.965 0.006 100 / 0.94);
+  padding: var(--space-3) var(--space-4);
+  backdrop-filter: blur(12px);
+}
+
+.page-main {
+  width: 100%;
+  min-width: 0;
+  padding-block: var(--space-6) var(--space-10);
+}
+
+.mobile-bottom-nav {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: var(--z-sticky);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface-raised);
+  padding: var(--space-2) max(var(--space-2), env(safe-area-inset-right)) max(var(--space-2), env(safe-area-inset-bottom)) max(var(--space-2), env(safe-area-inset-left));
+  box-shadow: 0 -2px 8px oklch(0.19 0.018 145 / 0.06);
+}
+
+.mobile-more-panel {
+  position: fixed;
+  right: var(--space-3);
+  bottom: calc(5.25rem + env(safe-area-inset-bottom));
+  left: var(--space-3);
+  z-index: calc(var(--z-sticky) + 1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-raised);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-raised);
+}
+
+.dialog-backdrop::backdrop {
+  background: var(--color-backdrop);
+}
+
+@media (min-width: 768px) {
+  .app-grid {
+    display: grid;
+    grid-template-columns: 15.5rem minmax(0, 1fr);
+  }
+
+  .desktop-sidebar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    border-right: 1px solid var(--color-border);
+    background: var(--color-surface);
+    padding: var(--space-5) var(--space-4);
+  }
+
+  .app-column {
+    padding-bottom: 0;
+  }
+
+  .top-header {
+    min-height: 5rem;
+    padding-inline: var(--space-6);
+  }
+
+  .page-main {
+    padding-block: var(--space-8) var(--space-12);
+  }
+
+  .mobile-bottom-nav,
+  .mobile-more-panel {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .app-grid {
+    grid-template-columns: 17rem minmax(0, 1fr);
+  }
+
+  .top-header {
+    padding-inline: var(--space-8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

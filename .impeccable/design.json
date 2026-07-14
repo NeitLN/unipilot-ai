@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-14T15:59:37.4377759+07:00",
+  "title": "Design System: UniPilot AI",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Healthy Stem",
+        "canonical": "oklch(0.42 0.12 145)",
+        "tonalRamp": [
+          "oklch(0.15 0.12 145)",
+          "oklch(0.26 0.12 145)",
+          "oklch(0.37 0.12 145)",
+          "oklch(0.48 0.12 145)",
+          "oklch(0.6 0.12 145)",
+          "oklch(0.72 0.1 145)",
+          "oklch(0.84 0.07 145)",
+          "oklch(0.95 0.035 145)"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Desk Canvas",
+        "canonical": "oklch(0.965 0.006 100)",
+        "tonalRamp": [
+          "oklch(0.15 0.006 100)",
+          "oklch(0.26 0.006 100)",
+          "oklch(0.37 0.006 100)",
+          "oklch(0.48 0.006 100)",
+          "oklch(0.6 0.006 100)",
+          "oklch(0.72 0.006 100)",
+          "oklch(0.84 0.006 100)",
+          "oklch(0.95 0.006 100)"
+        ]
+      },
+      "warning": {
+        "role": "secondary",
+        "displayName": "Caution Amber",
+        "canonical": "oklch(0.5 0.13 75)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 75)",
+          "oklch(0.26 0.13 75)",
+          "oklch(0.37 0.13 75)",
+          "oklch(0.48 0.13 75)",
+          "oklch(0.6 0.12 75)",
+          "oklch(0.72 0.1 75)",
+          "oklch(0.84 0.07 75)",
+          "oklch(0.95 0.04 75)"
+        ]
+      },
+      "error": {
+        "role": "secondary",
+        "displayName": "Overdue Red",
+        "canonical": "oklch(0.48 0.17 28)",
+        "tonalRamp": [
+          "oklch(0.15 0.17 28)",
+          "oklch(0.26 0.17 28)",
+          "oklch(0.37 0.17 28)",
+          "oklch(0.48 0.17 28)",
+          "oklch(0.6 0.14 28)",
+          "oklch(0.72 0.11 28)",
+          "oklch(0.84 0.075 28)",
+          "oklch(0.95 0.035 28)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page-level academic context."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Readable task and explanatory copy."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Controls, navigation, fields, and statuses."
+      }
+    },
+    "shadows": [
+      {
+        "name": "low",
+        "value": "0 1px 2px oklch(0.19 0.018 145 / 0.06)",
+        "purpose": "Subtle separation for controls."
+      },
+      {
+        "name": "raised",
+        "value": "0 4px 8px oklch(0.19 0.018 145 / 0.08)",
+        "purpose": "Dialogs and temporary navigation layers."
+      }
+    ],
+    "motion": [
+      {
+        "name": "fast",
+        "value": "150ms",
+        "purpose": "Immediate state feedback."
+      },
+      {
+        "name": "base",
+        "value": "200ms cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Navigation and control transitions."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-reference",
+        "value": "375px"
+      },
+      {
+        "name": "tablet-shell",
+        "value": "768px"
+      },
+      {
+        "name": "desktop-wide",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The principal action on a task surface.",
+      "html": "<button class=\"ds-button-primary\">Save assignment</button>",
+      "css": ".ds-button-primary { min-height: 44px; border: 0; border-radius: var(--radius-sm); background: var(--color-primary); color: var(--color-on-primary); padding: 0 16px; font: 600 14px/1.4 ui-sans-serif, system-ui, sans-serif; transition: background 200ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-button-primary:hover { background: var(--color-primary-hover); } .ds-button-primary:active { background: var(--color-primary-active); } .ds-button-primary:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "description": "A reversible or supporting action.",
+      "html": "<button class=\"ds-button-secondary\">Cancel</button>",
+      "css": ".ds-button-secondary { min-height: 44px; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); background: var(--color-surface-raised); color: var(--color-ink); padding: 0 16px; font: 600 14px/1.4 ui-sans-serif, system-ui, sans-serif; transition: background 200ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-button-secondary:hover { background: var(--color-surface-muted); } .ds-button-secondary:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-default",
+      "description": "A labelled academic-data field.",
+      "html": "<label class=\"ds-field\">Assignment title<input class=\"ds-input\" value=\"Research outline\" /></label>",
+      "css": ".ds-field { display: grid; gap: 8px; color: var(--color-ink); font: 600 14px/1.4 ui-sans-serif, system-ui, sans-serif; } .ds-input { min-height: 44px; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); background: var(--color-surface-raised); color: var(--color-ink); padding: 8px 12px; font: 400 16px/1.5 ui-sans-serif, system-ui, sans-serif; } .ds-input:hover { border-color: var(--color-primary); } .ds-input:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }"
+    },
+    {
+      "name": "Selected Navigation",
+      "kind": "nav",
+      "refersTo": "nav-selected",
+      "description": "Current location in the academic workspace.",
+      "html": "<a class=\"ds-nav-selected\" href=\"#\">Assignments</a>",
+      "css": ".ds-nav-selected { display: flex; min-height: 44px; align-items: center; border-radius: var(--radius-sm); background: var(--color-selected-bg); color: var(--color-selected-text); padding: 0 12px; font: 600 14px/1.4 ui-sans-serif, system-ui, sans-serif; text-decoration: none; } .ds-nav-selected:hover { background: var(--color-primary-soft-hover); } .ds-nav-selected:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }"
+    },
+    {
+      "name": "Work Surface",
+      "kind": "card",
+      "refersTo": "card-default",
+      "description": "A structured container for one coherent academic task.",
+      "html": "<section class=\"ds-work-surface\"><h3>Upcoming work</h3><p>Academic content belongs here.</p></section>",
+      "css": ".ds-work-surface { border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface-raised); color: var(--color-text); padding: 24px; } .ds-work-surface h3 { margin: 0; color: var(--color-ink); font: 600 20px/1.2 ui-sans-serif, system-ui, sans-serif; } .ds-work-surface p { margin: 8px 0 0; font: 400 16px/1.5 ui-sans-serif, system-ui, sans-serif; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Well-Marked Study Desk",
+    "overview": "UniPilot AI feels like a study space arranged before a demanding week: every tool has a place, the next action is visible, and decoration never competes with work.",
+    "keyCharacteristics": [
+      "Restrained color with one deep primary accent.",
+      "Compact hierarchy for repeated daily use.",
+      "Brighter work surfaces over a warm low-chroma canvas.",
+      "Familiar controls with explicit states and keyboard behavior.",
+      "Structural adaptation at mobile, tablet, and desktop widths."
+    ],
+    "rules": [
+      {
+        "name": "The Ten Percent Rule",
+        "body": "Primary green occupies no more than roughly ten percent of a screen; rarity preserves action hierarchy.",
+        "section": "colors"
+      },
+      {
+        "name": "The Flat-by-Default Rule",
+        "body": "A bordered component does not also receive a wide decorative shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep academic actions visible and phrase them as direct verbs.",
+      "Do preserve focus, semantics, non-color meaning, and reduced motion.",
+      "Do label unfinished behavior honestly as a foundation."
+    ],
+    "donts": [
+      "Don't use glassmorphism, excessive gradients, gradient text, AI sparkles, or generic AI-SaaS styling.",
+      "Don't use oversized rounded cards, identical icon-card grids, hero metrics, or nested cards.",
+      "Don't simulate CRUD, AI, GPA, timers, APIs, authentication, or academic data."
+    ]
+  }
+}
